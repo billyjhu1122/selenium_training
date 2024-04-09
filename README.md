@@ -1,11 +1,11 @@
 # this a selenium training
-## question (³oÃä»¡©ú¬°¦ó­n³o»ò°µ¡A¥Î­^¤å)
+## question (é€™é‚Šèªªæ˜ç‚ºä½•è¦é€™éº¼åšï¼Œç”¨è‹±æ–‡)
 
-### step 1 ±N¦a¸¹±q¤@Äæ§ï¬°¤@¦C
+### step 1 å°‡åœ°è™Ÿå¾ä¸€æ¬„æ”¹ç‚ºä¸€åˆ—
 
 
 
-### step 2 ©ñ¤J»İ­n¨Ï¥Îªº®w¡AµM«á¶}±Òºô­¶
+### step 2 æ”¾å…¥éœ€è¦ä½¿ç”¨çš„åº«ï¼Œç„¶å¾Œé–‹å•Ÿç¶²é 
 
 #%pip install selenium
 #%pip install webdriver_manager
@@ -31,7 +31,7 @@ driver = webdriver.Chrome(service=service)
 driver.get("https://land-query.tainan.gov.tw/query/rwd/RHD10.jsp?csrf.param=23F87EFEA633013778626BE62DE9626C&menu=false#queryResult")
 print(driver.title)
 
-### step 3 ³]­p°j°é¡A¨ú±oµ²ªG
+### step 3 è¨­è¨ˆè¿´åœˆï¼Œå–å¾—çµæœ
 
 for building_number, num2_value in building_data:
   time.sleep(0.01)
@@ -39,12 +39,12 @@ for building_number, num2_value in building_data:
   clearbutton.click()
   time.sleep(0.05)
   select_area = driver.find_element(By.NAME, 'SiteArea')
-  select_area.send_keys("·sÀç°Ï")   #°Ï¦Û¤v½Õ
+  select_area.send_keys("æ–°ç‡Ÿå€")   #å€è‡ªå·±èª¿
   time.sleep(0.1)
   select_site = driver.find_element(By.NAME, 'R48')
-  select_site.send_keys("2146")   #¬q¦Û¤v½Õ
+  select_site.send_keys("2146")   #æ®µè‡ªå·±èª¿
   time.sleep(0.01)
-  #«ç»òÂI¿ï«Ø¸¹ÁÙ¦a¸¹?¹ï¸Ó«ö¶sÀË¬d«ácopy xpath
+  #æ€éº¼é»é¸å»ºè™Ÿé‚„åœ°è™Ÿ?å°è©²æŒ‰éˆ•æª¢æŸ¥å¾Œcopy xpath
   clickbutton = driver.find_element(By.XPATH, '/html/body/div/div[1]/div[2]/form/div[2]/div/div[2]')
   clickbutton.click()
   time.sleep(0.01)
@@ -65,8 +65,8 @@ for building_number, num2_value in building_data:
   html_text
     
   pattern = r'(\d{4}-\d{4})'
-  start_tag = "\n¦æ¬F°Ï ¤g¦a¬q¥N½X ¤g¦a¬q¤p¬q¦W ¦a¸¹ «Øª«¬q¥N½X «Øª«¬q¤p¬q¦W «Ø¸¹"     
-  end_tag = "\n¥»¬d¸ß¨t²Î¸ê®Æ¥H¦U¦a¬F¨Æ°È©Ò¬°·Ç¡A¥»¨t²Î¸ê®Æ¶È¨Ñ°Ñ¦Ò¡C\n"
+  start_tag = "\nè¡Œæ”¿å€ åœŸåœ°æ®µä»£ç¢¼ åœŸåœ°æ®µå°æ®µå åœ°è™Ÿ å»ºç‰©æ®µä»£ç¢¼ å»ºç‰©æ®µå°æ®µå å»ºè™Ÿ"     
+  end_tag = "\næœ¬æŸ¥è©¢ç³»çµ±è³‡æ–™ä»¥å„åœ°æ”¿äº‹å‹™æ‰€ç‚ºæº–ï¼Œæœ¬ç³»çµ±è³‡æ–™åƒ…ä¾›åƒè€ƒã€‚\n"
   start_index = html_text.find(start_tag)
   if start_index != -1:
     end_index = html_text.find(end_tag, start_index + len(start_tag))
@@ -76,19 +76,19 @@ for building_number, num2_value in building_data:
       if land_numbers:
         found = False
         for land_number in land_numbers:
-          if "©PªZ¬q" in result_text:
-            land_number = land_number.replace("©PªZ¬q", "").strip()
+          if "å‘¨æ­¦æ®µ" in result_text:
+            land_number = land_number.replace("å‘¨æ­¦æ®µ", "").strip()
             print(land_number)
             found = True
             break
             if not found:
-              print("¥¼§ä¨ì©PªZ¬q")
+              print("æœªæ‰¾åˆ°å‘¨æ­¦æ®µ")
           else:
-            print("¥¼§ä¨ì¦a¸¹«H®§")
+            print("æœªæ‰¾åˆ°åœ°è™Ÿä¿¡æ¯")
         else:
-          print("¥¼§ä¨ìµ²§ô¼Ğ°O")
+          print("æœªæ‰¾åˆ°çµæŸæ¨™è¨˜")
       else:
-        print("¥¼§ä¨ì¶}©l¼Ğ°O")
+        print("æœªæ‰¾åˆ°é–‹å§‹æ¨™è¨˜")
 
 
 
