@@ -1,6 +1,6 @@
 
 
-# this a selenium training
+# selenium training
 
 ## question 
 
